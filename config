@@ -1,0 +1,30 @@
+[user]
+	name = Luke Swithenbank
+	email = lswith@users.noreply.github.com
+	signingkey = /Users/lukeswithenbank/.ssh/id_ed25519.pub
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[gpg]
+	format = ssh
+[push]
+	autoSetupRemote = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[difftool "vimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[alias]
+	d = difftool
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+[mergetool]
+	keepBackup = false
+[mergetool "vimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'"
